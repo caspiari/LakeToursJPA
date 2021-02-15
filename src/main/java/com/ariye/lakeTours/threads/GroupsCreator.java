@@ -1,5 +1,7 @@
 package com.ariye.lakeTours.threads;
 
+import com.ariye.lakeTours.dao.GroupsDao;
+import com.ariye.lakeTours.dao.GuidesDao;
 import com.ariye.lakeTours.dao.TouristsDao;
 import com.ariye.lakeTours.entities.Group;
 import com.ariye.lakeTours.entities.Guide;
@@ -14,7 +16,9 @@ public class GroupsCreator extends Thread {
     Random random = new Random();
 
     @Autowired
-    TouristsDao touristsDao;
+    GroupsDao groupsDao;
+    @Autowired
+    GuidesDao guidesDao;
 
     public void createGroup() {
         ArrayList<Tourist> tourists = new ArrayList<>(10);
@@ -24,7 +28,9 @@ public class GroupsCreator extends Thread {
         }
 
         Guide guide = new Guide("guide");
+        guide = guidesDao.save(guide);
         Group group = new Group(guide, tourists);
+        groupsDao.save(group);
 
     }
 }

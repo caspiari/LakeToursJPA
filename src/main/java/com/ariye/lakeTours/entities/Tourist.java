@@ -1,17 +1,6 @@
 package com.ariye.lakeTours.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "tourists")
 public class Tourist {
-
-    @Id
-    @GeneratedValue
-    private long id;
 
     private String name;
 
@@ -22,30 +11,12 @@ public class Tourist {
         this.weight = weight;
     }
 
-    /**
-     * Full ctor
-     */
-    public Tourist(long id, String name, short weight) {
-        this.id = id;
-        this.name = name;
-        this.weight = weight;
-    }
-
     @Override
     public String toString() {
         return "\nTourist{" +
-                "id=" + id +
                 ", name='" + name + '\'' +
                 ", weight=" + weight +
                 '}';
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getName() {
