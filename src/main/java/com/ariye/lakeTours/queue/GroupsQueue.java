@@ -17,11 +17,23 @@ public class GroupsQueue {
             this.firstNode = node;
             this.lastNode = node;
         } else {
-            this.lastNode.setNextGroup(node);
+            this.lastNode.setNextNode(node);
             this.lastNode = node;
         }
         lenght++;
     }
 
-    public Node dequeue()
+    public Group dequeue() {
+        if (firstNode != null) {
+            Group group = firstNode.getGroup();
+            if (firstNode.getNextNode() != null) {
+                firstNode = firstNode.getNextNode();
+            }
+            lenght--;
+            return group;
+        }
+        return null;
+    }
+
+
 }

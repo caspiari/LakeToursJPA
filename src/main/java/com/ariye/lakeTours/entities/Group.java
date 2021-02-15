@@ -21,6 +21,16 @@ public class Group {
         this.tourists = new ArrayList<>();
     }
 
+    public Group(Guide guide, List<Tourist> tourists) {
+        this.guide = guide;
+        this.tourists = tourists;
+        short totalWeight = 0;
+        for(Tourist tourist : tourists) {
+            totalWeight += tourist.getWeight();
+        }
+        this.currentWeight = totalWeight;
+    }
+
     /**
      * Full ctor
      */
@@ -30,12 +40,19 @@ public class Group {
         this.currentWeight = currentWeight;
     }
 
+    public Group() {
+    }
+
     @Override
     public String toString() {
         return "\nGroup{" +
                 "guide=" + guide +
                 ", currentWeight=" + currentWeight +
                 '}';
+    }
+
+    public long getId() {
+        return this.guide.getId();
     }
 
     public Guide getGuide() {

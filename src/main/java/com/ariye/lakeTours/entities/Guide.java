@@ -12,22 +12,18 @@ public class Guide {
 
     private String name;
 
-    private short weight;
-
     @OneToMany(mappedBy = "guide", cascade = CascadeType.DETACH)
     private Group[] groups;
 
-    public Guide(long id, String name, short weight) {
-        this.id = id;
+    public Guide(String name) {
         this.name = name;
-        this.weight = weight;
     }
 
     /**
      * Full ctor
      */
-    public Guide(long id, String name, short weight, Group[] groups) {
-        this(id, name, weight);
+    public Guide(String name, Group[] groups) {
+        this(name);
         this.groups = groups;
     }
 
@@ -36,8 +32,7 @@ public class Guide {
         return "\nGuide{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", weight=" + weight +
-                '}';
+                ", weight=" + '}';
     }
 
     public long getId() {
@@ -54,14 +49,6 @@ public class Guide {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public short getWeight() {
-        return weight;
-    }
-
-    public void setWeight(short weight) {
-        this.weight = weight;
     }
 
     public Group[] getGroups() {
